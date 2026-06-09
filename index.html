@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BCA Premium Live Test</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            background-color: #eef2f5; 
+            color: #333;
+            padding: 20px; 
+            margin: 0;
+        }
+        .container { 
+            background: white; 
+            max-width: 900px; 
+            margin: 0 auto; 
+            padding: 30px; 
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1); 
+            border-top: 8px solid #1a5276; 
+            border-radius: 8px;
+        }
+        .header { text-align: center; border-bottom: 2px solid #1a5276; padding-bottom: 15px; margin-bottom: 25px; }
+        .header h1 { margin: 0; color: #1a5276; font-size: 26px; }
+        .header h2 { margin: 5px 0 0; color: #555; font-size: 16px; }
+        .instructions { background: #fef9e7; padding: 15px; border-left: 5px solid #f39c12; font-size: 14px; margin-bottom: 25px; border-radius: 4px; }
+        .section-title { background: #1a5276; color: white; padding: 10px 15px; font-size: 16px; font-weight: bold; margin: 30px 0 15px 0; border-radius: 4px; }
+        .question-block { margin-bottom: 20px; padding: 15px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; }
+        .question-text { font-weight: 600; color: #1e293b; margin-bottom: 12px; font-size: 15px; }
+        .options { display: flex; flex-direction: column; gap: 8px; }
+        .option-label { display: flex; align-items: center; padding: 8px 12px; background: white; border: 1px solid #cbd5e1; border-radius: 4px; cursor: pointer; transition: 0.2s; font-size: 14px; }
+        .option-label:hover { background: #f1f5f9; }
+        .option-label input { margin-right: 10px; cursor: pointer; }
+        
+        /* Result Highlights */
+        .correct-answer { background-color: #d4edda !important; border-color: #28a745 !important; color: #155724 !important; font-weight: bold; }
+        .wrong-answer { background-color: #f8d7da !important; border-color: #dc3545 !important; color: #721c24 !important; text-decoration: line-through; }
+        
+        .submit-btn { display: block; width: 100%; padding: 15px; background: #1a5276; color: white; border: none; font-size: 18px; font-weight: bold; border-radius: 6px; cursor: pointer; margin-top: 30px; transition: 0.3s; }
+        .submit-btn:hover { background: #154360; }
+        
+        #result-box { display: none; background: #d4edda; color: #155724; border: 2px solid #28a745; padding: 20px; margin-top: 30px; text-align: center; border-radius: 8px; font-size: 22px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>12th - LIVE EXAM PORTAL</h1>
+        <h3> तुलसीदास  Online Test (50 Questions)</h3>
+<h2 style="font-size:10px; color:#888; font-weight:normal;">
+    यह test sangam (in id-@sangam__zero) द्वारा बनाया गया है। यदि आप भी अपने लिए इसी प्रकार का online test बनवाना चाहते हैं, तो 9241967602 पर Message कर सकते हैं।</h2>
+    </div>
+
+    <div class="instructions">
+        <strong>निर्देश:</strong> सभी प्रश्नों के उत्तर दें। प्रत्येक प्रश्न के 4 विकल्प हैं। परीक्षण पूरा करने के बाद <strong>"Submit Test"</strong> पर क्लिक करें ताकि आप अपना स्कोर और सही उत्तर देख सकें।
+    </div>
+
+    <form id="quizForm">
+        
+        <!-- SECTION 01 -->
+        <div class="section-title">SECTION 01. </div>
+        
+        <script>
+            // All 50 Questions Data (Generated Dynamically for clean code)
+           const questions = [
+                // SECTION - पद (तुलसीदास) - Hindi 12th Objective Questions
+                { q: "1. तुलसीदास का जन्म कब हुआ ?", opt: ["1540 ई० में", "1543 ई० में", "1545 ई० में", "1550 ई० में"], ans: 1 },
+                { q: "2. तुलसीदास का जन्म किस प्रदेश में हुआ था ?", opt: ["हिमाचल प्रदेश", "आन्ध्रप्रदेश", "उत्तर प्रदेश", "मध्यप्रदेश"], ans: 2 },
+                { q: "3. काशी में कितने वर्षों तक रहकर तुलसीदास ने शिक्षा प्राप्त की ?", opt: ["दस वर्षों तक", "पन्द्रह वर्षों तक", "बीस वर्षों तक", "पच्चीस वर्षों तक"], ans: 0 },
+                { q: "4. 'रामचरितमानस' किसकी रचना है ?", opt: ["सूरदास", "तुलसीदास", "कबीरदास", "नाभादास"], ans: 1 },
+                { q: "5. तुलसीदास किस शाखा के कवि हैं ?", opt: ["राममार्गी", "कृष्णमार्गी", "प्रेममार्गी", "ज्ञानमार्गी"], ans: 0 },
+                { q: "6. दूसरे पद में तुलसी ने अपना परिचय किस रूप में दिया है ?", opt: ["निर्बल के रूप में", "दाता के रूप में", "भिखारी के रूप में", "इनमें से कोई नहीं"], ans: 2 },
+                { q: "7. तुलसीदास को किस चीज की भूख है ?", opt: ["यश की", "भक्ति की", "धन की", "इनमें से कोई नहीं"], ans: 1 },
+                { q: "8. तुलसीदास के पठित पद किस भाषा में हैं ?", opt: ["मैथिली", "ब्रजभाषा", "खड़ी-बोली", "अवधी"], ans: 3 },
+                { q: "9. तुलसीदास ने प्रथम पद में किसकी स्तुति की है ?", opt: ["गणेश जी की", "भगवान शिव की", "सीता जी की", "इनमें से कोई नहीं"], ans: 2 },
+                { q: "10. तुलसीदास के दोनों पदों में किस रस की व्यंजना हुई है ?", opt: ["वात्सल्य रस", "भक्ति रस", "रौद्र रस", "शृंगार रस"], ans: 1 },
+                { q: "11. तुलसीदास ने प्रथम पद में अपना परिचय किस रूप में दिया है ?", opt: ["रामभक्त के रूप में", "महाकवि के रूप में", "दीन के दुखिया के रूप में", "सीता के दास के रूप में"], ans: 3 },
+                { q: "12. 'कबहुँक अंब अवसर पाई' में 'अंब' सम्बोधन किसके लिए है ?", opt: ["सीता के लिए", "राधा के लिए", "अंजनी के लिए", "इनमें से कोई नहीं"], ans: 0 },
+                { q: "13. कौन तुलसीदास के मित्र नहीं थे ?", opt: ["महाराजा मान सिंह", "टोडरमल", "सूरदास", "नाभादास"], ans: 2 },
+                { q: "14. कौन-सी रचना तुलसीदास की है ?", opt: ["सूरसागर", "विनय पत्रिका", "प्रायश्चित", "पद्मावत"], ans: 1 },
+                { q: "15. कौन-सी रचना तुलसीदास की नहीं है ?", opt: ["पार्वती मंगल", "बैराग्य संदीपनी", "आखिरी कलाम", "कवितावली"], ans: 2 },
+                { q: "16. 'कवितावली' के रचनाकार हैं –", opt: ["जायसी", "तुलसीदास", "कबीरदास", "सूरदास"], ans: 1 },
+                { q: "17. 'हनुमानबाहुक' को तुलसीदास की किस कृति का एक अंग माना जाता है ?", opt: ["जानकीमंगल", "कवितावली", "गीतावली", "श्रीकृष्ण गीतावली"], ans: 1 },
+                { q: "18. रामचरितमानस का प्रधान रस है –", opt: ["वीररस", "श्रृंगाररस", "करुणरस", "भक्तिरस"], ans: 3 },
+                { q: "19. निम्नलिखित में 'रामचरितमानस' क्या है ?", opt: ["गीतिकाव्य", "गाथा", "महाकाव्य", "खंडकाव्य"], ans: 2 },
+                { q: "20. इनमें से कौन-सी रचना तुलसी की नहीं है ?", opt: ["कवितावली", "बरवैरामायण", "गीतावली", "राधा-स्तुति"], ans: 3 },
+                { q: "21. 'मानस' (रामचरितमानस) का रचना समय क्या है ?", opt: ["संवत 1631", "संवत 1622", "संवत 1480", "संवत 1632"], ans: 0 },
+                { q: "22. 'रामचरितमानस' की भाषा है-", opt: ["मैथिली", "संस्कृत", "अवधी", "ब्रजभाषा"], ans: 2 },
+                { q: "23. 'विनयपत्रिका' की भाषा है –", opt: ["अवधी", "अंतर्वेदी (ब्रजभाषा)", "मैथिली", "अंगिका"], ans: 1 },
+                { q: "24. तुलसीदास का जन्म कहाँ हुआ था ?", opt: ["राजापुर (बाँदा, उत्तर प्रदेश)", "अयोध्या में", "हाजीपुर में", "प्रयाग में"], ans: 0 },
+                { q: "25. तुलसीदास का मूल नाम क्या था ?", opt: ["रमभोला", "रामबोला", "हरिबोला", "इनमें से कोई नहीं"], ans: 1 },
+                { q: "26. तुलसीदास के शिक्षा गुरु थे –", opt: ["नरहरिदास", "रविदास", "शेष सनातन", "मधुसूदन सरस्वती"], ans: 2 },
+                { q: "27. इनमें से कौन-सी रचना तुलसी की है ?", opt: ["लग्नपत्रिका", "प्रणयपत्रिका", "सीता स्वयंवर", "विनयपत्रिका"], ans: 3 },
+                { q: "28. कौन-सी कृति तुलसी रचित है ?", opt: ["'उत्तररामचरितम्'", "'रामायण'", "'रामचरितमानस'", "'खंजननयन'"], ans: 2 },
+                { q: "29. कौन-सी कृति तुलसीदास द्वारा रचित नहीं है ?", opt: ["'वैराग्य संदीपिनी'", "'पंचवटी'", "'बरवैरामायण'", "'जानकी मंगल'"], ans: 1 },
+                { q: "30. पाठ्यपुस्तक में संकलित तुलसी के पद तुलसीदास की किस कृति से लिए गए हैं ?", opt: ["'दोहावली' से", "'रामलला नहछू' से", "'कवितावली' से", "'विनय के पद' से"], ans: 3 },
+                { q: "31. तुलसीदास किस काल के कवि थे ?", opt: ["आदिकाल के", "रीतिकाल के", "आधुनिक काल के", "भक्तिकाल के"], ans: 3 },
+                { q: "32. 'कवितावली' के रचनाकार हैं –", opt: ["जायसी", "तुलसीदास", "कबीर", "सूरदास"], ans: 1 }
+            ];
+            // Render Questions
+            questions.forEach((item, index) => {
+                if(index === 10) document.write('<div class="section-title">SECTION 02. </div>');
+                if(index === 20) document.write('<div class="section-title">SECTION 03. </div>');
+                if(index === 30) document.write('<div class="section-title">SECTION 04. </div>');
+                if(index === 40) document.write('<div class="section-title">SECTION 05. </div>');
+
+                let optionsHTML = '';
+                item.opt.forEach((option, i) => {
+                    optionsHTML += `
+                        <label class="option-label" id="label-q${index}-opt${i}">
+                            <input type="radio" name="q${index}" value="${i}">
+                            ${String.fromCharCode(97 + i)}) ${option}
+                        </label>`;
+                });
+
+                document.write(`
+                    <div class="question-block" id="qBlock${index}">
+                        <div class="question-text">${item.q}</div>
+                        <div class="options">${optionsHTML}</div>
+                    </div>
+                `);
+            });
+        </script>
+
+        <button type="button" class="submit-btn" onclick="calculateScore()">Submit Test & Check Result</button>
+    </form>
+
+    <div id="result-box"></div>
+
+</div>
+
+<script>
+    function calculateScore() {
+        let score = 0;
+        let total = questions.length;
+
+        questions.forEach((item, index) => {
+            // Get selected option
+            let selected = document.querySelector(`input[name="q${index}"]:checked`);
+            let correctValue = item.ans;
+            
+            // Highlight correct answer permanently
+            let correctLabel = document.getElementById(`label-q${index}-opt${correctValue}`);
+            correctLabel.classList.add("correct-answer");
+
+            if (selected) {
+                let selectedValue = parseInt(selected.value);
+                if (selectedValue === correctValue) {
+                    score++;
+                } else {
+                    // Highlight wrong answer if user selected it
+                    let wrongLabel = document.getElementById(`label-q${index}-opt${selectedValue}`);
+                    wrongLabel.classList.add("wrong-answer");
+                }
+            }
+        });
+
+        // Show Score
+        let resultBox = document.getElementById('result-box');
+        resultBox.style.display = "block";
+        
+        let percentage = (score / total) * 100;
+        let message = "";
+        
+        if(percentage >= 80) message = "उत्कृष्ट प्रदर्शन! 🌟";
+        else if(percentage >= 50) message = "अच्छा प्रयास, थोड़ी और मेहनत करें! 👍";
+        else message = "आपको और अभ्यास की आवश्यकता है! 📚";
+
+        resultBox.innerHTML = `आपका स्कोर: ${score} / ${total} <br><span style="font-size:18px; color:#333;">${message}</span>`;
+        
+        // Scroll to result
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
